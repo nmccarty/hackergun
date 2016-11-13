@@ -87,27 +87,41 @@ public class GravityToggle : MonoBehaviour {
     {
         LaserShooter laser = contained.GetComponent<LaserShooter>();
         ProjectileShooter project = contained.GetComponent<ProjectileShooter>();
-        if (laser != null && !laser.enabled)
-        {
-            laser.enabled = true;
-        }
-        if (project != null && laser.enabled)
-        {
-            project.enabled = false;
-        }
+        project.enabled = false;
+        laser.enabled = true;
+
     }
 
     public void mkProjectile()
     {
         LaserShooter laser = contained.GetComponent<LaserShooter>();
         ProjectileShooter project = contained.GetComponent<ProjectileShooter>();
-        if (laser != null && laser.enabled)
-        {
-            laser.enabled = false;
-        }
-        if (project != null && !laser.enabled)
-        {
-            project.enabled = true;
-        }
+        laser.enabled = false;
+        project.enabled = true;
+    }
+
+    public void mkRed()
+    {
+        LaserShooter laser = contained.GetComponent<LaserShooter>();
+        LineRenderer line = contained.GetComponent<LineRenderer>();
+        line.SetColors(Color.red,Color.red);
+    }
+    public void mkBlue()
+    {
+        LaserShooter laser = contained.GetComponent<LaserShooter>();
+        LineRenderer line = contained.GetComponent<LineRenderer>();
+        line.SetColors(Color.blue, Color.blue);
+    }
+    public void mkGreen()
+    {
+        LaserShooter laser = contained.GetComponent<LaserShooter>();
+        LineRenderer line = contained.GetComponent<LineRenderer>();
+        line.SetColors(Color.green, Color.green);
+    }
+    public void mkYellow()
+    {
+        LaserShooter laser = contained.GetComponent<LaserShooter>();
+        LineRenderer line = contained.GetComponent<LineRenderer>();
+        line.SetColors(Color.yellow, Color.yellow);
     }
 }
