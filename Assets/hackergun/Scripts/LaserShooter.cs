@@ -7,9 +7,11 @@ public class LaserShooter : VRTK_InteractableObject
 
     public int laserStrength;
     public int pulseDuration;
+    public Rigidbody bullet;
 
     LineRenderer line;
     bool laser;
+    public bool fakeit;
     int count;
 
     // Use this for initialization
@@ -20,13 +22,21 @@ public class LaserShooter : VRTK_InteractableObject
         line = gameObject.GetComponent<LineRenderer>();
         line.enabled = false;
         count = 0;
+        fakeit = false;
     }
 
     public override void StartUsing(GameObject currentUsingObject)
     {
         base.StartUsing(currentUsingObject);
-        laser = true;
-        count = 0;
+        if (!fakeit)
+        {
+            laser = true;
+            count = 0;
+        } else
+        {
+            Rigidbody instantiatedProjectile = Instantiate(bullet, transform.position, transform.rotation) as Rigidbody;
+            instantiatedProjectile.velocity = transform.TransformDirection(new Vector3(0, 0, laserStrength));
+        }
     }
     public override void StopUsing(GameObject previousUsingObject)
     {

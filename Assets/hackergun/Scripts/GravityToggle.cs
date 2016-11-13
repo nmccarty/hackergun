@@ -86,18 +86,14 @@ public class GravityToggle : MonoBehaviour {
     public void mkLaser()
     {
         LaserShooter laser = contained.GetComponent<LaserShooter>();
-        ProjectileShooter project = contained.GetComponent<ProjectileShooter>();
-        project.enabled = false;
-        laser.enabled = true;
+        laser.fakeit = false;
 
     }
 
     public void mkProjectile()
     {
         LaserShooter laser = contained.GetComponent<LaserShooter>();
-        ProjectileShooter project = contained.GetComponent<ProjectileShooter>();
-        laser.enabled = false;
-        project.enabled = true;
+        laser.fakeit = true;
     }
 
     public void mkRed()
